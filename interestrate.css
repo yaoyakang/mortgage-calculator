@@ -159,7 +159,7 @@ h5 {
 
 .formulamode>span:after {
 	content: '';
-	background: url('../images/xz.png') no-repeat top left /0.675rem 0.675rem;
+	background: url('./xz.png') no-repeat top left /0.675rem 0.675rem;
 	position: absolute;
 	top: 0.075rem;
 	left: -1rem;
@@ -169,7 +169,7 @@ h5 {
 }
 
 .formulamode>.acitve:after {
-	background: url('../images/xzz.png') no-repeat top left /0.675rem 0.675rem;
+	background: url('./xzz.png') no-repeat top left /0.675rem 0.675rem;
 }
 
 .inputbox {
