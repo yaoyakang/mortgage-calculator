@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>贷款计算</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script type="text/javascript">
+			function setRem() {
+				var html = document.documentElement;
+				var hWidth = html.getBoundingClientRect().width;
+				html.style.fontSize = hWidth / 16 + 'px';
+			}
+			setRem();
+		</script>
+		<script src="./mui.min.js"></script>
+		<script src="./jquery-1.9.1.js"></script>
+		<link rel="stylesheet" type="text/css" href="./interestrate.css" />
+		<script src="./mortgage.js"></script>
+	</head>
+
+	<body>
+		<div class="title">
+			<a href="" class='withdraw'>
+				<img src="../images/bc.png" alt="" />
+			</a>
+			贷款计算
+		</div>
+		<ul class="typetab-title" id="typetab-title">
+			<li class="typetab-title-active"><span>商业贷款</span></li>
+			<li><span>公积金贷款</span></li>
+		</ul>
+		<div class="typetab-content" id="typetab-content">
+			<ul class="typetab-content-ul" id='typetab-content-ul'>
+				<li class="typetab-content-li">
+					<div class="type-mode">
+						<h1>计算方式</h1>
+						<div class="formulamode">
+							<span class="acitve">
+								根据面积
+							</span>
+							<span>
+								根据贷款额度
+							</span>
+						</div>
+						<div class="area">
+							<h1>单价</h1>
+							<div class="inputbox">
+								<input type="number" class="unit-input" placeholder="请输入" />
+								<span>元/平米</span>
+							</div>
+							<h1>面积</h1>
+							<div class="inputbox">
+								<input type="number" class="area-input" placeholder="请输入" />
+								<span>平方米</span>
+							</div>
+							<h1>按揭成数</h1>
+							<ul class="inputbox loan-ul" num="0.9">
+								<li num="0.9" class="inputbox-li">
+									<h2>9成</h2>
+								</li>
+								<li num="0.8" class="inputbox-li">
+									<h2>8成</h2>
+								</li>
+								<li num="0.7" class="inputbox-li">
+									<h2>7成</h2>
+								</li>
+								<li num="0.6" class="inputbox-li">
+									<h2>6成</h2>
+								</li>
+								<li num="0.5" class="inputbox-li">
+									<h2>5成</h2>
+								</li>
+								<li num="0.4" class="inputbox-li">
+									<h2>4成</h2>
+								</li>
+								<li num="0.3" class="inputbox-li">
+									<h2>3成</h2>
+								</li>
+								<li num="0.2" class="inputbox-li">
+									<h2>2成</h2>
+								</li>
+							</ul>
+						</div>
+						<div class="price">
+							<h1>贷款总额</h1>
+							<div class="inputbox">
+								<input type="number" class="amount-input" placeholder="请输入" />
+								<span>万元</span>
+							</div>
+						</div>
+						<h1>按揭年数</h1>
+						<ul class="inputbox deadline-ul" num="1">
+							<li num="1" deadlinenum="0" class="inputbox-li">
+								<h2>1年（12期）</h2>
+							</li>
+							<li num="2" deadlinenum="1" class="inputbox-li">
+								<h2>2年（24期）</h2>
+							</li>
+							<li num="3" deadlinenum="2" class="inputbox-li">
+								<h2>3年（36期）</h2>
+							</li>
+							<li num="4" deadlinenum="3" class="inputbox-li">
+								<h2>4年（48期）</h2>
+							</li>
+							<li num="5" deadlinenum="4" class="inputbox-li">
+								<h2>5年（60期）</h2>
+							</li>
+							<li num="6" deadlinenum="5" class="inputbox-li">
+								<h2>6年（72期）</h2>
+							</li>
+							<li num="7" deadlinenum="6" class="inputbox-li">
+								<h2>7年（84期）</h2>
+							</li>
+							<li num="8" deadlinenum="7" class="inputbox-li">
+								<h2>8年（96期）</h2>
+							</li>
+							<li num="9" deadlinenum="8" class="inputbox-li">
+								<h2>9年（108期）</h2>
+							</li>
+							<li num="10" deadlinenum="9" class="inputbox-li">
+								<h2>10年（120期）</h2>
+							</li>
+							<li num="15" deadlinenum="10" class="inputbox-li">
+								<h2>15年（180期）</h2>
+							</li>
+							<li num="20" deadlinenum="11" class="inputbox-li">
+								<h2>20年（240期）</h2>
+							</li>
+							<li num="25" deadlinenum="12" class="inputbox-li">
+								<h2>25年（300期）</h2>
+							</li>
+							<li num="30" deadlinenum="13" class="inputbox-li">
+								<h2>30年（360期）</h2>
+							</li>
+						</ul>
+						<h1>贷款利率</h1>
+						<ul class="inputbox rate-ul" num="5.66">
+							<li class="rate inputbox-li" num="5.66" >
+								<h2>2018年1月1日利率上限（1.3倍）</h2>
+							</li>
+							<li class="rate inputbox-li" num="5.22" class="">
+								<h2>2018年1月1日利率上限（1.2倍）</h2>
+							</li>
+							<li class="rate inputbox-li" num="4.78" >
+								<h2>2018年1月1日利率上限（1.1倍）</h2>
+							</li>
+							<li class="rate inputbox-li" num="3.7" >
+								<h2>2018年1月1日利率下限（85折）</h2>
+							</li>
+							<li class="rate inputbox-li" num="3.05">
+								<h2>2018年1月1日利率下限（7折）</h2>
+							</li>
+							<li class="rate inputbox-li" num="4.35" >
+								<h2>2018年1月1日基准利率</h2>
+							</li>
+						</ul>
+						<h1>还款方式</h1>
+						<ul class="inputbox way-ul" num="0">
+							<li num="0" class="inputbox-li" class="inputbox-li">
+								<h2>等额本息</h2>
+							</li>
+							<li num="1" class="inputbox-li" class="inputbox-li">
+								<h2>等额本金</h2>
+							</li>
+						</ul>
+						<div class="calculate">
+							<button class="compute">开始计算</button>
+							<input type="reset" class="reset-btn" value="重新填写" />
+							<h3>计算结果</h3>
+							<ol class="calculate-ol">
+								<li>房屋总价<span>0元</span>
+								</li>
+								<li>贷款总额<span>0元</span>
+								</li>
+								<li>还款总额<span>0元</span>
+								</li>
+								<li>支付利息<span>0元</span>
+								</li>
+								<li>首期付款<span>0元</span>
+								</li>
+								<li>贷款月数<span>0月</span>
+								</li>
+								<li>月均还款<span>0元</span>
+								</li>
+							</ol>
+						</div>
+					</div>
+				</li>
+				<!--第一屏结束-->
+				<li class="typetab-content-li">
+					<div class="type-mode">
+						<h1>计算方式</h1>
+						<div class="formulamode">
+							<span class="acitve">
+								根据面积
+							</span>
+							<span>
+								根据贷款额度
+							</span>
+						</div>
+						<div class="area">
+							<h1>单价</h1>
+							<div class="inputbox">
+								<input type="number" class="unit-input" placeholder="请输入" />
+								<span>元/平米</span>
+							</div>
+							<h1>面积</h1>
+							<div class="inputbox">
+								<input type="number" class="area-input" placeholder="请输入" />
+								<span>平方米</span>
+							</div>
+							<h1>按揭成数</h1>
+							<ul class="inputbox loan-ul" num="0.9">
+								<li num="0.9" class="inputbox-li">
+									<h2>9成</h2>
+								</li>
+								<li num="0.8" class="inputbox-li">
+									<h2>8成</h2>
+								</li>
+								<li num="0.7" class="inputbox-li">
+									<h2>7成</h2>
+								</li>
+								<li num="0.6" class="inputbox-li">
+									<h2>6成</h2>
+								</li>
+								<li num="0.5" class="inputbox-li">
+									<h2>5成</h2>
+								</li>
+								<li num="0.4" class="inputbox-li">
+									<h2>4成</h2>
+								</li>
+								<li num="0.3" class="inputbox-li">
+									<h2>3成</h2>
+								</li>
+								<li num="0.2" class="inputbox-li">
+									<h2>2成</h2>
+								</li>
+							</ul>
+						</div>
+						<div class="price">
+							<h1>贷款总额</h1>
+							<div class="inputbox">
+								<input type="number" class="amount-input" placeholder="请输入" />
+								<span>万元</span>
+							</div>
+						</div>
+						<h1>按揭年数</h1>
+						<ul class="inputbox deadline-ul" num="1">
+							<li num="1" deadlinenum="0" class="inputbox-li">
+								<h2>1年（12期）</h2>
+							</li>
+							<li num="2" deadlinenum="1" class="inputbox-li">
+								<h2>2年（24期）</h2>
+							</li>
+							<li num="3" deadlinenum="2" class="inputbox-li">
+								<h2>3年（36期）</h2>
+							</li>
+							<li num="4" deadlinenum="3" class="inputbox-li">
+								<h2>4年（48期）</h2>
+							</li>
+							<li num="5" deadlinenum="4" class="inputbox-li">
+								<h2>5年（60期）</h2>
+							</li>
+							<li num="6" deadlinenum="5" class="inputbox-li">
+								<h2>6年（72期）</h2>
+							</li>
+							<li num="7" deadlinenum="6" class="inputbox-li">
+								<h2>7年（84期）</h2>
+							</li>
+							<li num="8" deadlinenum="7" class="inputbox-li">
+								<h2>8年（96期）</h2>
+							</li>
+							<li num="9" deadlinenum="8" class="inputbox-li">
+								<h2>9年（108期）</h2>
+							</li>
+							<li num="10" deadlinenum="9" class="inputbox-li">
+								<h2>10年（120期）</h2>
+							</li>
+							<li num="15" deadlinenum="10" class="inputbox-li">
+								<h2>15年（180期）</h2>
+							</li>
+							<li num="20" deadlinenum="11" class="inputbox-li">
+								<h2>20年（240期）</h2>
+							</li>
+							<li num="25" deadlinenum="12" class="inputbox-li">
+								<h2>25年（300期）</h2>
+							</li>
+							<li num="30" deadlinenum="13" class="inputbox-li">
+								<h2>30年（360期）</h2>
+							</li>
+						</ul>
+						<h1>贷款利率</h1>
+						<ul class="inputbox rate-ul" num="2.75">
+							<li class="rate" num="2.75">
+								<h2>2018年1月1日基准利率</h2>
+							</li>
+						</ul>
+						<h1>还款方式</h1>
+						<ul class="inputbox way-ul" num="0">
+							<li num="0" class="inputbox-li">
+								<h2>等额本息</h2>
+							</li>
+							<li num="1" class="inputbox-li">
+								<h2>等额本金</h2>
+							</li>
+						</ul>
+						<div class="calculate">
+							<button class="compute">开始计算</button>
+							<input type="reset" value="重新填写" class="reset-btn" />
+							<h3>计算结果</h3>
+							<ol class="calculate-ol">
+								<li>房屋总价<span>0元</span>
+								</li>
+								<li>贷款总额<span>0元</span>
+								</li>
+								<li>还款总额<span>0元</span>
+								</li>
+								<li>支付利息<span>0元</span>
+								</li>
+								<li>首期付款<span>0元</span>
+								</li>
+								<li>贷款月数<span>0月</span>
+								</li>
+								<li>月均还款<span>0元</span>
+								</li>
+							</ol>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
